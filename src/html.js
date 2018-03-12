@@ -1,36 +1,17 @@
 import React from 'react';
 
-let stylesStr;
-if (process.env.NODE_ENV === `production`) {
-  try {
-    stylesStr = require(`!raw-loader!../public/styles.css`); // eslint-disable-line
-  } catch (e) {
-    console.log(e); // eslint-disable-line
-  }
-}
-
 module.exports = class HTML extends React.Component {
   render() {
-    let css;
-    if (process.env.NODE_ENV === `production`) {
-      css = (
-        <style
-          id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
-        />
-      );
-    }
     return (
       <html lang="en" {...this.props.htmlAttributes}>
         <head>
           <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          {this.props.headComponents}
-          {css}
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="stylesheet" href="css/base.css" />
+          <link rel="stylesheet" href="css/vendor.css" />
+          <link rel="stylesheet" href="css/main.css" />
+
+          <title>ShiBa</title>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
@@ -40,6 +21,11 @@ module.exports = class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
+          <script src="js/modernizr.js"></script>
+          <script src="js/pace.min.js"></script>
+          <script src="js/jquery-3.2.1.min.js"></script>
+          <script src="js/plugins.js"></script>
+          <script src="js/main.js"></script>
         </body>
       </html>
     );
