@@ -83,7 +83,7 @@ export default class Main extends React.Component {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://www.instagram.com/shadoart_/">
               <i className="im im-instagram" aria-hidden="true" />
               <span>Instagram</span>
             </a>
