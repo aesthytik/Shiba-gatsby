@@ -2201,7 +2201,7 @@ html.no-csstransitions .home-content__main {
 .s-about {
     padding-top: 15rem;
     padding-bottom: 9rem;
-    background-color: #FFFFFF;
+    background-color: #59c5ca;
     position: relative;
 }
 
@@ -2390,6 +2390,7 @@ html.no-csstransitions .home-content__main {
 .item-folio {
     position: relative;
     overflow: hidden;
+    max-height: 400px;
 }
 
 .item-folio__thumb img {
@@ -2575,6 +2576,7 @@ html.no-csstransitions .home-content__main {
     }
     .masonry .grid-sizer, .masonry__brick {
         width: 400px;
+        max-height: 400px;
     }
 }
 
@@ -3043,7 +3045,7 @@ html.no-csstransitions .home-content__main {
 
 .s-contact {
     background-color: #151515;
-    background-image: url("../images/contact-bg.jpg");
+    background-image: url("../images/shibi.jpg");
     background-repeat: no-repeat;
     background-position: center, center;
     padding-top: 13.2rem;

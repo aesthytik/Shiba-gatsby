@@ -1,42 +1,42 @@
 import React from 'react';
 
 export default class Main extends React.Component {
-  componentDidMount() {
-    const ssMoveHeader = function() {
-      let hero = $('.page-hero'),
-        hdr = $('header'),
-        triggerHeight = hero.outerHeight() - 170;
+  componentDidMount () {
+    const ssMoveHeader = function () {
+      let hero = $ ('.page-hero'),
+        hdr = $ ('header'),
+        triggerHeight = hero.outerHeight () - 170;
 
-      $WIN.on('scroll', () => {
-        const loc = $WIN.scrollTop();
+      $WIN.on ('scroll', () => {
+        const loc = $WIN.scrollTop ();
 
         if (loc > triggerHeight) {
-          hdr.addClass('removeClasssticky');
+          hdr.addClass ('removeClasssticky');
         } else {
-          hdr.removeClass('sticky');
+          hdr.removeClass ('sticky');
         }
 
         if (loc > triggerHeight + 20) {
-          hdr.addClass('offset');
+          hdr.addClass ('offset');
         } else {
-          hdr.removeClass('offset');
+          hdr.removeClass ('offset');
         }
 
         if (loc > triggerHeight + 150) {
-          hdr.addClass('scrolling');
+          hdr.addClass ('scrolling');
         } else {
-          hdr.removeClass('scrolling');
+          hdr.removeClass ('scrolling');
         }
       });
     };
   }
-  render() {
+  render () {
     return (
       <section
         id="home"
         className="s-home page-hero target-section"
         data-parallax="scroll"
-        data-image-src="images/hero-bg.jpg"
+        data-image-src="images/shibi.jpg"
         data-natural-width="3000"
         data-natural-height="2000"
         data-position-y="center"
@@ -49,9 +49,9 @@ export default class Main extends React.Component {
             <h3>Hello There</h3>
 
             <h1>
-              I am Shawn . <br />
+              I am shiBa . <br />
               I am an artist <br />
-              from USA.
+              from Maldives.
             </h1>
 
             <div className="home-content__buttons">

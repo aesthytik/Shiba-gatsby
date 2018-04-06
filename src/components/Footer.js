@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default () => (
-  <footer style={{background: '#0a0809'}}>
+  <footer style={{background: '#59c5ca'}}>
     <div className="row">
       <div className="col-full">
         <div className="footer-logo">

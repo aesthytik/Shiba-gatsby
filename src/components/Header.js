@@ -3,35 +3,35 @@ import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 export default class Header extends React.Component {
-  componentDidMount() {
-    const ssMobileMenu = function() {
-      let toggleButton = $('.header-menu-toggle'),
-        nav = $('.header-nav-wrap');
+  componentDidMount () {
+    const ssMobileMenu = function () {
+      let toggleButton = $ ('.header-menu-toggle'),
+        nav = $ ('.header-nav-wrap');
 
-      toggleButton.on('click', event => {
-        event.preventDefault();
+      toggleButton.on ('click', event => {
+        event.preventDefault ();
 
-        toggleButton.toggleClass('is-clicked');
-        nav.slideToggle();
+        toggleButton.toggleClass ('is-clicked');
+        nav.slideToggle ();
       });
 
-      if (toggleButton.is(':visible')) nav.addClass('mobile');
+      if (toggleButton.is (':visible')) nav.addClass ('mobile');
 
-      $WIN.on('resize', () => {
-        if (toggleButton.is(':visible')) nav.addClass('mobile');
-        else nav.removeClass('mobile');
+      $WIN.on ('resize', () => {
+        if (toggleButton.is (':visible')) nav.addClass ('mobile');
+        else nav.removeClass ('mobile');
       });
 
-      nav.find('a').on('click', () => {
-        if (nav.hasClass('mobile')) {
-          toggleButton.toggleClass('is-clicked');
-          nav.slideToggle();
+      nav.find ('a').on ('click', () => {
+        if (nav.hasClass ('mobile')) {
+          toggleButton.toggleClass ('is-clicked');
+          nav.slideToggle ();
         }
       });
     };
   }
 
-  render() {
+  render () {
     const Parallax = styled.div`
        {
         visibility: visible;
@@ -66,7 +66,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <Parallax className="parallax-mirror">
-          <Image className="parallax-slider" src="images/hero-bg.jpg" />
+          <Image className="parallax-slider" />
         </Parallax>
 
         <div className="pace  pace-inactive">
@@ -104,11 +104,11 @@ export default class Header extends React.Component {
                 </a>
               </li>
               <li>
-               
-                  <a href="#anchor3"className="smoothscroll" title="contact">
-                    Contact
-                  </a>
-              
+
+                <a href="#anchor3" className="smoothscroll" title="contact">
+                  Contact
+                </a>
+
               </li>
             </ul>
           </nav>
