@@ -24,7 +24,7 @@ export default () => (
             </a>
           </li>
           <li>
-            <a href="#0">
+            <a href="https://www.instagram.com/shadoart_/">
               <i className="im im-instagram" aria-hidden="true" />
               <span>Instagram</span>
             </a>
