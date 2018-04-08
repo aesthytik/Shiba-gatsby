@@ -10,7 +10,7 @@ export default () => (
         <h1>Say Hello.</h1>
 
         <p className="lead">
-          Guys you can find me on my instagram profile. Search shadoart and you will find me there. Links are provided for you in description.
+          Guys you can find me on my instagram profile. Search shadoart_ and you will find me there. Links are provided for you in description.
         </p>
       </div>
     </div>

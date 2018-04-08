@@ -9,7 +9,7 @@ export default () => (
         <p className="lead">
           Hello. I m ShiBa from Maldives. I'm just a young girl who is interested in drawing. I used to draw Mandala, Zentangle and Doodle normally. Before I used to sketch but after getting interested into this newly world of Doodle I can't keep my eye out of it. Despite that, I love to read books, listening to music.
           To see my artworks you can check out my instagram.
-          Thankyou so much for the visit. I hope I did'nt regret your this precious time 😊
+          Thankyou so much for the visit. I hope I didn't regret your this precious time 😊
           {' '}
         </p>
       </div>
