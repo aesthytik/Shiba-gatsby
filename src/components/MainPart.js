@@ -49,7 +49,7 @@ export default class Main extends React.Component {
             <h3>Hello There</h3>
 
             <h1>
-              I am shiBa . <br />
+              I am ShiBa . <br />
               I am an artist <br />
               from Maldives.
             </h1>
@@ -58,8 +58,13 @@ export default class Main extends React.Component {
               <a href="#works" className="smoothscroll btn btn--stroke">
                 Latest Projects
               </a>
-              <a href="#about" className="smoothscroll btn btn--stroke">
-                More About Me
+              <a
+                href="https://www.instagram.com/shadoart_/"
+                target="_blank"
+                className="smoothscroll btn btn--stroke"
+                style={{padding: '0px'}}
+              >
+                Visit my Instagram
               </a>
             </div>
 
@@ -69,38 +74,6 @@ export default class Main extends React.Component {
           </div>
         </div>
 
-        <ul className="home-social">
-          <li>
-            <a href="#">
-              <i className="im im-facebook" aria-hidden="true" />
-              <span>Facebook</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="im im-twitter" aria-hidden="true" />
-              <span>Twiiter</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/shadoart_/">
-              <i className="im im-instagram" aria-hidden="true" />
-              <span>Instagram</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="im im-behance" aria-hidden="true" />
-              <span>Behance</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="im im-pinterest" aria-hidden="true" />
-              <span>Pinterest</span>
-            </a>
-          </li>
-        </ul>
       </section>
     );
   }

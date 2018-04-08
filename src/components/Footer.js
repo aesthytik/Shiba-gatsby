@@ -11,36 +11,14 @@ export default () => (
         </div>
 
         <ul className="footer-social">
-          <li>
-            <a href="#0">
-              <i className="im im-facebook" aria-hidden="true" />
-              <span>Facebook</span>
-            </a>
-          </li>
-          <li>
-            <a href="#0">
-              <i className="im im-twitter" aria-hidden="true" />
-              <span>Twitter</span>
-            </a>
-          </li>
+
           <li>
             <a href="https://www.instagram.com/shadoart_/">
               <i className="im im-instagram" aria-hidden="true" />
               <span>Instagram</span>
             </a>
           </li>
-          <li>
-            <a href="#0">
-              <i className="im im-behance" aria-hidden="true" />
-              <span>Behance</span>
-            </a>
-          </li>
-          <li>
-            <a href="#0">
-              <i className="im im-pinterest" aria-hidden="true" />
-              <span>Pinterest</span>
-            </a>
-          </li>
+
         </ul>
       </div>
     </div>
