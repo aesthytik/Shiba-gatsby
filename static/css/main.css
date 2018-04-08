@@ -1276,7 +1276,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .section-intro h3 {
     font-family: "montserrat-semibold", sans-serif;
     font-size: 2rem;
-    color: #862121;
+    color: #59c5ca;
     text-transform: uppercase;
     letter-spacing: .15rem;
     margin-top: 0;
@@ -1777,7 +1777,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .home-content h3 {
     font-family: "montserrat-bold", sans-serif;
     font-size: 1.8rem;
-    color: #862121;
+    color: #59c5ca;
     text-transform: uppercase;
     letter-spacing: .5rem;
     position: relative;
@@ -1791,7 +1791,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     content: "";
     width: 60px;
     height: 2px;
-    background-color: #862121;
+    background-color: #59c5ca;
     margin-top: -1.5px;
     position: absolute;
     left: 0;

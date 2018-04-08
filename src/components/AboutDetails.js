@@ -7,9 +7,9 @@ export default () => (
         <h3>About</h3>
         <h1>More About Me</h1>
         <p className="lead">
-          Hello. I m ShiBa from maldives. I m just a young girl who is interested in drawing. I used to draw Mandala, Zentangle and Doodle normally. Before i used to sketch but after getting interested into this newly world of Doodle i cant keep my eye out of it. Despite that, i love to read books, listening to music.
+          Hello. I m ShiBa from Maldives. I'm just a young girl who is interested in drawing. I used to draw Mandala, Zentangle and Doodle normally. Before I used to sketch but after getting interested into this newly world of Doodle I can't keep my eye out of it. Despite that, I love to read books, listening to music.
           To see my artworks you can check out my instagram.
-          Thankyou so much for the visit. I hope i didnt regret your this precious time
+          Thankyou so much for the visit. I hope I did'nt regret your this precious time 😊
           {' '}
         </p>
       </div>

@@ -117,11 +117,16 @@ export default () => (
                 className="thumb-link"
                 data-size="1050x700"
               >
-                <img
+                <video
+                  autoPlay
+                  type="video/mp4"
+                  src="https://instagram.fixc1-2.fna.fbcdn.net/vp/70161a021bb0356c419bb9a079b997b1/5ACC734D/t50.2886-16/27310007_178293492937381_4222126622897059929_n.mp4"
+                />
+                {/* <img
                   src="https://instagram.fixc1-2.fna.fbcdn.net/vp/29ef1d75e3bf7447212351c650c6b423/5B543C2D/t51.2885-15/e35/27573851_185956915337209_4488466013750296576_n.jpg"
                   srcset="https://instagram.fixc1-2.fna.fbcdn.net/vp/57e343c695710c2a45fdcb0208977802/5B64BBDB/t51.2885-15/sh0.08/e35/p640x640/27573851_185956915337209_4488466013750296576_n.jpg 640w,https://instagram.fixc1-2.fna.fbcdn.net/vp/d59c0d4a4a282b04f88fc55750bfa070/5B57DFDB/t51.2885-15/sh0.08/e35/p750x750/27573851_185956915337209_4488466013750296576_n.jpg 750w,https://instagram.fixc1-2.fna.fbcdn.net/vp/29ef1d75e3bf7447212351c650c6b423/5B543C2D/t51.2885-15/e35/27573851_185956915337209_4488466013750296576_n.jpg 1080w"
                   alt=""
-                />
+                /> */}
                 <span className="shadow-overlay" />
               </a>
             </div>
@@ -262,7 +267,7 @@ export default () => (
                 LighHouse
               </h3>
               <p className="item-folio__cat">
-                Doodle
+                Mandala
               </p>
             </div>
 
@@ -394,7 +399,7 @@ export default () => (
                 Girl
               </h3>
               <p className="item-folio__cat">
-                Doodle
+                Calligraphy
               </p>
             </div>
 
