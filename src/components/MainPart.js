@@ -49,9 +49,11 @@ export default class Main extends React.Component {
             <h3>Hello There</h3>
 
             <h1>
-              I am ShiBa,<br />
-              an artist <br />
-              from Maldives.
+              <ul>
+                I am ShiBa.<br />
+                I am an Artist <br />
+                from Maldives. I love mandalas and doodles.
+              </ul>
             </h1>
 
             <div className="home-content__buttons">
