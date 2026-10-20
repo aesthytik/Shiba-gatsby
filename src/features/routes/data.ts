@@ -1,0 +1,125 @@
+import type { TestCentre, TestRoute } from './types'
+
+// Illustrative routes around a fictional test centre. DVSA stopped publishing real test routes
+// in 2010, so real-world routes would come from instructors or learners (see docs/FEASIBILITY.md).
+
+export const CENTRES: TestCentre[] = [
+  {
+    id: 'sampleton',
+    name: 'Sampleton (demo)',
+    area: 'Fictional town',
+    description: 'A made-up test centre whose routes include the features examiners commonly use: mini and multi-exit roundabouts, traffic lights, a school zone, faster roads and manoeuvres.',
+    demo: true,
+  },
+]
+
+export const ROUTES: TestRoute[] = [
+  {
+    id: 'sampleton-town',
+    centreId: 'sampleton',
+    name: 'Town centre and roundabouts',
+    summary: 'Busy 30 mph streets with a zebra crossing, two mini-roundabouts, traffic lights and a school zone with road humps.',
+    difficulty: 'Typical',
+    segments: [
+      { t: 'road', len: 140, limit: 30, name: 'Test Centre Road' },
+      { t: 'turn', dir: 'left', at: 't-junction', control: 'give-way', into: 'High Street' },
+      { t: 'road', len: 140, limit: 30, name: 'High Street', features: [{ at: 75, kind: 'zebra' }] },
+      { t: 'roundabout', exit: 2, mini: true, into: 'High Street' },
+      { t: 'road', len: 520, limit: 30, name: 'High Street', features: [{ at: 220, kind: 'bus-stop' }] },
+      { t: 'turn', dir: 'right', at: 'crossroads', control: 'lights', into: 'Church Lane' },
+      { t: 'road', len: 380, limit: 20, name: 'Church Lane', features: [{ at: 60, kind: 'school' }, { at: 210, kind: 'humps' }] },
+      { t: 'turn', dir: 'right', at: 't-junction', control: 'stop', into: 'Mill Road' },
+      { t: 'road', len: 520, limit: 30, name: 'Mill Road' },
+      { t: 'roundabout', exit: 3, into: 'Ring Road' },
+      { t: 'road', len: 380, limit: 40, name: 'Ring Road' },
+      { t: 'roundabout', exit: 2, mini: true, into: 'Ring Road' },
+      { t: 'road', len: 100, limit: 30, name: 'Ring Road' },
+      { t: 'roundabout', exit: 1, into: 'Station Road' },
+      { t: 'road', len: 140, limit: 30, name: 'Station Road' },
+      { t: 'turn', dir: 'right', at: 't-junction', control: 'give-way', into: 'Test Centre Road' },
+      { t: 'road', len: 40, limit: 30, name: 'Test Centre Road' },
+      { t: 'task', kind: 'normal-stop', say: 'Pull up on the left at the next safe place. That is the end of the test.' },
+    ],
+    hotspots: [
+      { seg: 2, title: 'Zebra crossing straight after a junction', note: 'You have just turned, so your speed is low — keep scanning the kerbs for pedestrians about to step out.' },
+      { seg: 3, title: 'Mini-roundabout', note: 'Give way to traffic from the right and go round the painted circle, not over it. Many candidates fail to look right early enough.' },
+      { seg: 5, title: 'Turning right at traffic lights', note: 'Position just left of the centre line. On green, move forward to the turning point and give way to oncoming traffic.' },
+      { seg: 6, title: '20 mph school zone with humps', note: 'Speeding through 20 mph zones is a common serious fault. Watch for children and parked cars near the school gates.' },
+      { seg: 7, title: 'STOP junction', note: 'You must come to a complete stop at the solid line, even if the road is clear.' },
+      { seg: 9, title: 'Roundabout: 3rd exit (turning right)', note: 'Signal right on approach and use the right-hand lane. Check your left mirror and signal left after passing the exit before yours.' },
+      { seg: 15, title: 'Emerging right with a limited view', note: 'Creep forward slowly until you can see both ways — "creep and peep".' },
+    ],
+  },
+  {
+    id: 'sampleton-faster',
+    centreId: 'sampleton',
+    name: 'Faster roads',
+    summary: '40 and 60 mph roads with bends, a large roundabout turning right and an emerge onto a fast road.',
+    difficulty: 'Challenging',
+    segments: [
+      { t: 'road', len: 140, limit: 30, name: 'Test Centre Road' },
+      { t: 'turn', dir: 'right', at: 't-junction', control: 'give-way', into: 'High Street' },
+      { t: 'road', len: 260, limit: 30, name: 'High Street' },
+      { t: 'roundabout', exit: 2, into: 'Bypass' },
+      { t: 'road', len: 280, limit: 40, name: 'Bypass' },
+      { t: 'road', len: 700, limit: 60, name: 'Bypass', area: 'rural', bend: 35 },
+      { t: 'road', len: 500, limit: 60, name: 'Bypass', area: 'rural' },
+      { t: 'roundabout', exit: 3, into: 'Long Lane' },
+      { t: 'road', len: 900, limit: 60, name: 'Long Lane', area: 'rural', bend: -40 },
+      { t: 'road', len: 300, limit: 50, name: 'Long Lane', area: 'rural' },
+      { t: 'turn', dir: 'left', at: 't-junction', control: 'give-way', into: 'Old Road' },
+      { t: 'road', len: 600, limit: 40, name: 'Old Road', bend: 25 },
+      { t: 'roundabout', exit: 1, mini: true, into: 'School Lane' },
+      { t: 'road', len: 250, limit: 30, name: 'School Lane', features: [{ at: 40, kind: 'school' }] },
+      { t: 'task', kind: 'hill-start', say: 'Pull up on the left at the next safe place, then move off when you are ready.' },
+      { t: 'road', len: 200, limit: 30, name: 'School Lane' },
+      { t: 'task', kind: 'normal-stop', say: 'Pull up on the left at the next safe place. That is the end of the test.' },
+    ],
+    hotspots: [
+      { seg: 3, title: 'Roundabout: straight ahead', note: 'Stay in the left lane, no signal on approach, signal left after passing the 1st exit.' },
+      { seg: 5, title: 'National speed limit', note: 'Build up to a safe speed for the road. Driving too slowly where it is safe to go faster ("undue hesitation") is a driving fault.' },
+      { seg: 7, title: 'Large roundabout turning right', note: 'Right lane on approach, keep to your lane on the roundabout, and check mirrors before moving left to exit.' },
+      { seg: 10, title: 'Emerging onto a fast road', note: 'Traffic approaches quickly from the right. Wait for a gap you are sure of — do not make others slow down.' },
+      { seg: 13, title: 'School and 30 mph', note: 'After a long fast section, slow down in good time for the 30 mph limit and the school.' },
+    ],
+  },
+  {
+    id: 'sampleton-residential',
+    centreId: 'sampleton',
+    name: 'Residential and manoeuvres',
+    summary: 'Quiet streets with side-road turns, pulling up on the right, an emergency stop and a parallel park.',
+    difficulty: 'Easier',
+    segments: [
+      { t: 'road', len: 140, limit: 30, name: 'Test Centre Road' },
+      { t: 'turn', dir: 'left', at: 't-junction', control: 'give-way', into: 'High Street' },
+      { t: 'road', len: 70, limit: 30, name: 'High Street' },
+      { t: 'turn', dir: 'right', at: 'side-road', into: 'Elm Avenue' },
+      { t: 'road', len: 220, limit: 30, name: 'Elm Avenue' },
+      { t: 'task', kind: 'pull-up-right', say: "Pull up on the right-hand side of the road when it's safe, then reverse about two car lengths." },
+      { t: 'road', len: 160, limit: 30, name: 'Elm Avenue' },
+      { t: 'turn', dir: 'left', at: 't-junction', control: 'give-way', into: 'Mill Road' },
+      { t: 'road', len: 70, limit: 30, name: 'Mill Road' },
+      { t: 'roundabout', exit: 3, into: 'Ring Road' },
+      { t: 'road', len: 260, limit: 30, name: 'Ring Road' },
+      { t: 'task', kind: 'emergency-stop', say: 'Shortly I will ask you to stop as in an emergency... STOP!' },
+      { t: 'road', len: 120, limit: 30, name: 'Ring Road' },
+      { t: 'turn', dir: 'left', at: 'side-road', into: 'Park Road' },
+      { t: 'road', len: 200, limit: 30, name: 'Park Road' },
+      { t: 'task', kind: 'parallel-park', say: 'Pull up on the left behind the parked car, then reverse park into the space behind it.' },
+      { t: 'road', len: 200, limit: 30, name: 'Park Road' },
+      { t: 'turn', dir: 'left', at: 't-junction', control: 'give-way', into: 'Church Lane' },
+      { t: 'road', len: 280, limit: 30, name: 'Church Lane' },
+      { t: 'task', kind: 'normal-stop', say: 'Pull up on the left at the next safe place. That is the end of the test.' },
+    ],
+    hotspots: [
+      { seg: 3, title: 'Turning right into a side road', note: 'Position just left of the centre line, give way to oncoming traffic, and check for pedestrians crossing the side road.' },
+      { seg: 5, title: 'Pull up on the right', note: 'Check for oncoming traffic before crossing over. Reverse slowly, close to the kerb, looking over your left shoulder.' },
+      { seg: 11, title: 'Emergency stop', note: 'React quickly, brake firmly, keep both hands on the wheel. Look all round, including blind spots, before moving off again.' },
+      { seg: 15, title: 'Parallel park', note: 'Go slowly and keep looking all round. You can make small corrections.' },
+    ],
+  },
+]
+
+export function routeById(id: string) {
+  return ROUTES.find((r) => r.id === id)
+}
