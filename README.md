@@ -58,7 +58,8 @@ The tests fail if any actor collides with the camera car or drives through a par
 
 ## Deployment and mobile
 
-- Any static host works. `public/_redirects` provides the SPA fallback on Netlify; use the equivalent rewrite elsewhere.
+- **Vercel:** import the repo at [vercel.com/new](https://vercel.com/new). `vercel.json` sets the Vite build, the SPA fallback and cache headers, so no extra settings are needed, and every push to `master` redeploys.
+- Any other static host works too. `public/_redirects` provides the SPA fallback on Netlify; use the equivalent rewrite elsewhere.
 - The app is an installable PWA and works offline after the first visit.
 - For the App Store and Google Play, wrap the build with [Capacitor](https://capacitorjs.com/) (`npx cap add ios` / `android`). See the feasibility doc for payments and accounts.
 
