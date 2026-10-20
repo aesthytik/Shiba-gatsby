@@ -1,10 +1,8 @@
-# Build output
-public/
-.cache/
-
-# Dependencies
-node_modules/
-
-# misc
+node_modules
+dist
+dev-dist
+*.local
 .DS_Store
-*.log*
+coverage
+*.tsbuildinfo
+test-results

@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+/* Semantic colour tokens. Components use these (bg-surface, text-muted, ...) so dark mode is automatic. */
+:root {
+  --c-bg: #f4f6f8;
+  --c-surface: #ffffff;
+  --c-surface-2: #eef2f5;
+  --c-ink: #0f172a;
+  --c-muted: #5b6b80;
+  --c-line: #dfe5ec;
+  --c-brand: #0b6e4f;
+  --c-brand-ink: #ffffff;
+  --c-brand-soft: #e3f3ec;
+  --c-accent: #ffcc00;
+  --c-ok: #15803d;
+  --c-ok-soft: #e4f6ea;
+  --c-bad: #c81e36;
+  --c-bad-soft: #fde8eb;
+  --c-warn: #b45309;
+  --c-warn-soft: #fdf1df;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg: #0b0f14;
+    --c-surface: #131a22;
+    --c-surface-2: #1b2430;
+    --c-ink: #e7ecf2;
+    --c-muted: #95a3b6;
+    --c-line: #253040;
+    --c-brand: #2fae84;
+    --c-brand-ink: #04140e;
+    --c-brand-soft: #12302a;
+    --c-accent: #ffd43b;
+    --c-ok: #4ade80;
+    --c-ok-soft: #10301d;
+    --c-bad: #f87171;
+    --c-bad-soft: #3a1418;
+    --c-warn: #fbbf24;
+    --c-warn-soft: #33260c;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-brand: var(--c-brand);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-brand-soft: var(--c-brand-soft);
+  --color-accent: var(--c-accent);
+  --color-ok: var(--c-ok);
+  --color-ok-soft: var(--c-ok-soft);
+  --color-bad: var(--c-bad);
+  --color-bad-soft: var(--c-bad-soft);
+  --color-warn: var(--c-warn);
+  --color-warn-soft: var(--c-warn-soft);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-plate: 'Charles Wright', 'Arial Narrow', 'Roboto Condensed', ui-sans-serif, sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: pop 0.35s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
