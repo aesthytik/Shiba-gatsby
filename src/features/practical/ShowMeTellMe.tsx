@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button'
 import { Badge } from '../../components/ui/Badge'
 import { VEHICLE_QUESTIONS } from '../../data/practical'
 import { useProgress } from '../../store/progress'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 type Filter = 'all' | 'tell' | 'show' | 'unsure'
 
@@ -37,6 +38,7 @@ export function ShowMeTellMe() {
         back="/practical"
         actions={<Badge tone="brand">{known} / {VEHICLE_QUESTIONS.length} known</Badge>}
       />
+      <SectionTabs section="practical" />
 
       <div className="mb-5 flex flex-wrap gap-1 rounded-xl bg-surface-2 p-1 text-sm sm:inline-flex">
         {(

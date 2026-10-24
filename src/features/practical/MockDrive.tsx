@@ -6,6 +6,7 @@ import { Card } from '../../components/ui/Card'
 import { Badge } from '../../components/ui/Badge'
 import { DL25 } from '../../data/practical'
 import { useProgress, type FaultTally } from '../../store/progress'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 const KINDS = [
   { key: 'd', label: 'Driving', cls: 'bg-warn-soft text-warn' },
@@ -45,6 +46,7 @@ export function MockDrive() {
         subtitle="For instructors and supervising drivers: mark faults during a mock test using the same categories as the examiner's sheet. Keep your eyes on the road — let a passenger do the marking."
         back="/practical"
       />
+      <SectionTabs section="drive" />
 
       <Card className={`sticky top-16 z-10 mb-4 flex flex-wrap items-center gap-4 md:top-2 ${pass ? 'border-ok/50' : 'border-bad/50'}`}>
         {KINDS.map((k) => (

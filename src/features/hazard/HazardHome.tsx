@@ -6,6 +6,7 @@ import { Badge } from '../../components/ui/Badge'
 import { useProgress } from '../../store/progress'
 import { CLIPS, TOTAL_HAZARDS, type EnvPreset } from './clips'
 import { HP_PASS_MARK } from './scoring'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 const ENV_ICON: Record<EnvPreset, typeof Sun> = { sunny: Sun, overcast: Cloud, dusk: Moon, rain: CloudRain }
 
@@ -19,6 +20,7 @@ export default function HazardHome() {
         title="Hazard perception"
         subtitle={`The real test has 14 clips with 15 developing hazards, scored up to 5 points each. You need ${HP_PASS_MARK} out of 75 to pass. These practice clips are original 3D scenes, scored the same way.`}
       />
+      <SectionTabs section="theory" />
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         <LinkCard to="/hazard/mock" icon={<Timer size={22} />} title="Hazard perception mock">

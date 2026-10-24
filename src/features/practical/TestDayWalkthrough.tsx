@@ -7,6 +7,7 @@ import { Card } from '../../components/ui/Card'
 import { CAR_CHECKLIST, FAULT_TYPES, WALKTHROUGH, type WalkthroughStep } from '../../data/practical'
 import { useProgress } from '../../store/progress'
 import { EyesightWidget, ReactionWidget, VehicleQuestionCard } from './widgets'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 export function TestDayWalkthrough() {
   const [i, setI] = useState(0)
@@ -14,6 +15,7 @@ export function TestDayWalkthrough() {
   return (
     <>
       <PageHeader title="Test day, step by step" subtitle="Walk through the practical test in the order it happens, with practice for each part." back="/practical" />
+      <SectionTabs section="practical" />
 
       <ol className="mb-6 flex gap-1.5 overflow-x-auto pb-2" aria-label="Steps">
         {WALKTHROUGH.map((s, k) => (
