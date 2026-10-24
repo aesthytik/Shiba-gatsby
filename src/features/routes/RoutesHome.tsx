@@ -8,6 +8,7 @@ import { useProgress } from '../../store/progress'
 import { buildRoute, segmentSummary } from './build'
 import { CENTRES, ROUTES } from './data'
 import { RouteMap } from './RouteMap'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`
 
@@ -21,6 +22,7 @@ export function RoutesHome() {
         title="Test routes"
         subtitle="Preview the kind of roads, junctions and manoeuvres you'll meet around a test centre — with turn-by-turn directions and a 3D drive-through."
       />
+      <SectionTabs section="drive" />
 
       <Card className="mb-6 flex gap-3 border-warn/40 bg-warn-soft text-sm leading-relaxed text-ink">
         <Info size={18} className="mt-0.5 shrink-0 text-warn" />

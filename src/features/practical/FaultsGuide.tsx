@@ -3,11 +3,13 @@ import { PageHeader } from '../../components/ui/PageHeader'
 import { Card } from '../../components/ui/Card'
 import { Badge } from '../../components/ui/Badge'
 import { FAULT_SCENARIOS, FAULT_TYPES, TOP_FAILS } from '../../data/practical'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 export function FaultsGuide() {
   return (
     <>
       <PageHeader title="Faults and how you pass" subtitle="Up to 15 driving faults and no serious or dangerous faults is a pass. Here is how examiners mark, and where most people go wrong." back="/practical" />
+      <SectionTabs section="practical" />
 
       <div className="mb-8 grid gap-3 md:grid-cols-3">
         {FAULT_TYPES.map((f) => (

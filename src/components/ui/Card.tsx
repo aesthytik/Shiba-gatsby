@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react'
 export function Card({ className = '', ...props }: ComponentProps<'div'>) {
   // Default padding unless the caller sets its own (class order can't be relied on to override it).
   const pad = /(^|\s)p-\d/.test(className) ? '' : 'p-5'
-  return <div className={`rounded-2xl border border-line bg-surface ${pad} ${className}`} {...props} />
+  return <div className={`rounded-3xl border border-line bg-surface ${pad} ${className}`} {...props} />
 }
 
 /** A card that navigates somewhere: icon, title, blurb and an optional footer slot. */

@@ -4,6 +4,7 @@ import { PageHeader } from '../../components/ui/PageHeader'
 import { Card } from '../../components/ui/Card'
 import { MANOEUVRES } from '../../data/manoeuvres'
 import { ManoeuvrePlayer } from './ManoeuvrePlayer'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 export function ManoeuvresPage() {
   const [id, setId] = useState(MANOEUVRES[0].id)
@@ -15,6 +16,7 @@ export function ManoeuvresPage() {
         subtitle="You'll be asked to do one of these on your test. Reference points differ between cars — use these as a guide and confirm them with your instructor."
         back="/practical"
       />
+      <SectionTabs section="practical" />
       <div className="mb-5 flex gap-1 overflow-x-auto rounded-xl bg-surface-2 p-1 text-sm sm:inline-flex">
         {MANOEUVRES.map((x) => (
           <button

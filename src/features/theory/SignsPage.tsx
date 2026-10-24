@@ -6,6 +6,7 @@ import { Button } from '../../components/ui/Button'
 import { RoadSign } from '../../components/signs/RoadSign'
 import { SIGN_CATEGORIES, SIGNS, type SignId } from '../../components/signs/signs'
 import { shuffle } from '../../lib/random'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 const ALL_SIGNS = Object.keys(SIGNS) as SignId[]
 
@@ -18,6 +19,7 @@ export function SignsPage() {
         subtitle="Circles give orders, triangles warn and rectangles inform. Learn the shapes and colours first — they tell you most of what a sign means."
         back="/theory"
       />
+      <SectionTabs section="theory" />
       <div className="mb-6 inline-flex gap-1 rounded-xl bg-surface-2 p-1 text-sm">
         {(['browse', 'quiz'] as const).map((t) => (
           <button key={t} type="button" onClick={() => setTab(t)} className={`rounded-lg px-4 py-1.5 font-semibold ${tab === t ? 'bg-surface text-ink shadow-sm' : 'text-muted'}`}>

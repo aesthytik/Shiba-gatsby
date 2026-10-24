@@ -8,6 +8,7 @@ import { TOPICS } from '../../data/topics'
 import { QUESTIONS, TOPIC_COUNTS } from '../../data/questions'
 import { useProgress } from '../../store/progress'
 import { MOCK, mistakesCount, theoryReadiness, topicMastery } from './logic'
+import { SectionTabs } from '../../components/layout/SectionTabs'
 
 export function TheoryHome() {
   const stats = useProgress((s) => s.questionStats)
@@ -23,6 +24,7 @@ export function TheoryHome() {
         title="Theory test"
         subtitle={`${MOCK.questions} multiple-choice questions in ${MOCK.minutes} minutes — you need ${MOCK.passMark} to pass. Then hazard perception: 14 clips, pass mark 44 out of 75. You must pass both parts in the same sitting.`}
       />
+      <SectionTabs section="theory" />
 
       <Card className="mb-6 flex flex-wrap items-center gap-6">
         <ProgressRing value={readiness} size={92} label="ready" />

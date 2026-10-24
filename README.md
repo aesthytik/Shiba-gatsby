@@ -2,9 +2,12 @@
 
 Prepare for the UK driving **theory** and **practical** tests in one app:
 
+- **Drive (new):** a drivable simulator for learners. Eleven short lessons (moving off, speed limits, pulling up, T-junctions, mini-roundabouts, zebra crossings, traffic lights), each teaching one rule. Automatic gearbox, keyboard, gamepad or on-screen controls, guided steering and speed limiter, a working rear-view mirror, scripted traffic and an examiner that marks faults using DVSA category names. Every lesson ends with stars and what to fix.
+- **Watch (new):** animated explainers replayed in 3D (overhead, behind or driver view) from the same demo driver that the tests use to prove each lesson can be driven cleanly.
+- **Progress (new):** a readiness score with next steps, weekly hours chart, mock and hazard trends, and faults by type.
 - **Theory:** practice questions by DVSA topic with explanations and Highway Code references, a mistakes deck, timed 50-question mock tests and a road-sign trainer.
 - **Hazard perception:** interactive 3D clips (sun, overcast, dusk, rain) scored on the DVSA 5-point scale, with pattern-click detection, a scoring timeline and replays that highlight the hazard.
-- **Practical:** a step-by-step test-day walkthrough, all 21 show me / tell me questions, animated manoeuvres, a faults guide and a mock-test marker for instructors and parents.
+- **Practical:** a logbook for real driving hours (instructor and private), skill levels, a practice plan for your supervising driver, a step-by-step test-day walkthrough, all 21 show me / tell me questions, animated manoeuvres, a faults guide and a mock-test marker for instructors and parents.
 - **Test routes:** turn-by-turn route previews with hotspots and a 3D drive-through (driver, follow and overhead cameras, sat-nav style directions, spoken prompts).
 
 Feasibility, licensing, market research and the roadmap are in [`docs/FEASIBILITY.md`](docs/FEASIBILITY.md).
@@ -31,7 +34,11 @@ src/
   components/      Shared UI, layout and the SVG road-sign library
   data/            Question bank, topics, practical test content, manoeuvre keyframes
   features/
-    home/          Dashboard
+    home/          Dashboard ("your plan for today", readiness, countdown)
+    drive/         Lesson simulator: engine.ts (physics, examiner, traffic), scenarios*.ts, bot.ts (demo driver),
+                   DriveScene.tsx (3D), DrivePlay.tsx (HUD), lessons.ts (22-lesson curriculum, 11 playable)
+    video/         Video helpers: chapters and replay of the demo driver
+    progress/      Stats (readiness, weekly hours, faults) and the Progress page
     theory/        Practice sessions, mock test, signs (logic.ts is unit-tested)
     hazard/        Clip scripts (clips.ts), scoring (scoring.ts), 3D scene and player
     practical/     Walkthrough, flashcards, manoeuvres, faults, mock-drive marker
@@ -40,6 +47,12 @@ src/
   store/           Progress store (Zustand, persisted to localStorage)
 docs/FEASIBILITY.md
 ```
+
+## Adding a drive lesson
+
+A lesson is a `Scenario` (see `src/features/drive/types.ts`): roads, markings, scripted traffic (`npcs`), checks shown on screen, a `rules(ctx)` function that raises faults the way an examiner would, and a `demo` plan for the demo driver. Add it to `builders` in `lessons.ts` and give the lesson a `scenario` id. `engine.test.ts` then automatically requires that the demo driver finishes with zero faults and three stars, that a driver who ignores other road users does not, and that the lesson cannot be finished by sitting still. `videos.ts` adds the matching video helper.
+
+Controls: W/S accelerate and brake, A/D steer, Q/E indicators, X mirror, Z/C look over each shoulder, V camera, Esc pause.
 
 ## Adding content
 
