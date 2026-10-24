@@ -3,9 +3,12 @@ import { PageHeader } from '../../components/ui/PageHeader'
 import { Card } from '../../components/ui/Card'
 import { Button } from '../../components/ui/Button'
 import { useProgress } from '../../store/progress'
+import { cloudEnabled } from '../../lib/supabase'
+import { useAuth } from '../account/auth'
 
 export function AboutPage() {
   const reset = useProgress((s) => s.reset)
+  const user = useAuth((s) => s.user)
   const [confirm, setConfirm] = useState(false)
   return (
     <>
@@ -43,7 +46,13 @@ export function AboutPage() {
         </Card>
         <Card>
           <h2 className="font-semibold text-ink">Your data</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted">Your progress is stored only in this browser on this device. Nothing is sent to a server.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            {user
+              ? 'You are signed in, so your progress is also saved to your account. Resetting here clears this device and, once synced, your cloud copy too.'
+              : cloudEnabled
+                ? 'Your progress is stored only in this browser on this device unless you create an account to save it. We never send it anywhere otherwise.'
+                : 'Your progress is stored only in this browser on this device. Nothing is sent to a server.'}
+          </p>
           {confirm ? (
             <div className="mt-3 flex gap-2">
               <Button

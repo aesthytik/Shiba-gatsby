@@ -1,6 +1,8 @@
 import { Link } from 'react-router'
 import { BookOpen, CalendarDays, Check, ClipboardCheck, Eye, Flame, Play, CircleDot } from 'lucide-react'
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
+import { cloudEnabled } from '../../lib/supabase'
+import { useAuth } from '../account/auth'
 import { RoadScene } from '../../components/art/RoadScene'
 import { Card } from '../../components/ui/Card'
 import { ProgressBar } from '../../components/ui/Progress'
@@ -29,6 +31,15 @@ export function HomePage() {
   const updateSettings = useProgress((s) => s.updateSettings)
 
   const now = Date.now()
+  const user = useAuth((s) => s.user)
+  const authReady = useAuth((s) => s.ready)
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return localStorage.getItem('roadready-save-prompt') === 'no'
+    } catch {
+      return false
+    }
+  })
   const best = bestByLesson(runs)
   const next = PLAYABLE.find((l) => lessonState(l, best, settings.unlockAll ?? false) === 'open') ?? PLAYABLE[PLAYABLE.length - 1]
   const nextVideo = next.video
@@ -72,6 +83,29 @@ export function HomePage() {
           </span>
         )}
       </header>
+
+      {cloudEnabled && authReady && !user && !dismissed && (runs.length > 0 || answeredToday > 0 || logbook.length > 0) && (
+        <aside className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-brand/30 bg-brand-soft px-4 py-3 text-sm">
+          <span className="min-w-0 flex-1 text-ink">Your progress is only saved on this device. Create a free account to keep it safe and use it anywhere.</span>
+          <Link to="/login" className="rounded-xl bg-brand px-4 py-2 font-bold text-brand-ink">
+            Save my progress
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              setDismissed(true)
+              try {
+                localStorage.setItem('roadready-save-prompt', 'no')
+              } catch {
+                /* private mode: the card just comes back next visit */
+              }
+            }}
+            className="rounded-xl px-3 py-2 font-semibold text-muted hover:text-ink"
+          >
+            Not now
+          </button>
+        </aside>
+      )}
 
       <div className="flex flex-wrap items-start gap-6">
         <div className="flex min-w-0 flex-[2_1_520px] flex-col gap-6">

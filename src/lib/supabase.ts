@@ -1,0 +1,9 @@
+import { createClient } from '@supabase/supabase-js'
+
+const url = import.meta.env.VITE_SUPABASE_URL
+const key = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+/** Null when the deployment has no Supabase settings: the app then runs entirely on this device. */
+export const supabase = url && key ? createClient(url, key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }) : null
+
+export const cloudEnabled = supabase !== null

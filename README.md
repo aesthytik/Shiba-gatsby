@@ -38,6 +38,7 @@ src/
     drive/         Lesson simulator: engine.ts (physics, examiner, traffic), scenarios*.ts, bot.ts (demo driver),
                    DriveScene.tsx (3D), DrivePlay.tsx (HUD), lessons.ts (22-lesson curriculum, 11 playable)
     video/         Video helpers: chapters and replay of the demo driver
+    account/       Supabase auth, login and account pages, cloud sync and merge (merge.ts is unit-tested)
     progress/      Stats (readiness, weekly hours, faults) and the Progress page
     theory/        Practice sessions, mock test, signs (logic.ts is unit-tested)
     hazard/        Clip scripts (clips.ts), scoring (scoring.ts), 3D scene and player
@@ -68,6 +69,18 @@ Controls: W/S accelerate and brake, A/D steer, Q/E indicators, X mirror, Z/C loo
 The tests fail if any actor collides with the camera car or drives through a parked vehicle.
 
 **Routes** go in `src/features/routes/data.ts`. A route is a list of segments: `road`, `turn` (side road, T-junction, crossroads with give-way, stop or lights), `roundabout` (exit number, mini or full) and `task` (pull up on the right, emergency stop, and so on). `build.ts` turns this into geometry, directions, stops and a speed profile; the map and 3D world are generated from that. Road lengths are measured from junction or roundabout centres.
+
+## Accounts and cloud save (Supabase)
+
+Accounts are optional. Without any settings the app runs entirely on the learner's device. With Supabase configured, learners can create an account (email and password, or an emailed sign-in link), and their progress syncs between devices. Signing in merges what is on the device with what is in the cloud, so nothing is lost; after that, changes save automatically a couple of seconds after they happen.
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. In **SQL editor**, run `supabase/migrations/0001_progress.sql` (the table and row level security) and `0002_delete_my_account.sql` (lets learners delete their own account).
+3. In **Authentication > URL configuration**, set **Site URL** to your deployed address and add it, plus `http://localhost:5173`, under **Redirect URLs**. Confirmation, sign-in and reset links return there.
+4. In **Authentication > Providers > Email**, keep email enabled. Leave **Confirm email** on for production.
+5. Copy **Project URL** and the **anon public key** (Project settings > API) into `.env.local` (see `.env.example`), and into your host's environment variables (on Vercel: Project > Settings > Environment Variables, then redeploy).
+
+The anon key is meant to be public: row level security means each learner can read and change only their own row. Never put the `service_role` key in this app. Merge rules live in `src/features/account/merge.ts` and are unit-tested.
 
 ## Deployment and mobile
 

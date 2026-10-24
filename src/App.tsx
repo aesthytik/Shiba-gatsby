@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router'
+import { lazy, Suspense, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router'
 import { AppShell } from './components/layout/AppShell'
 import { HomePage } from './features/home/HomePage'
 import { TheoryHome } from './features/theory/TheoryHome'
@@ -20,6 +20,9 @@ import { DriveBriefing } from './features/drive/DriveBriefing'
 import { DriveResult } from './features/drive/DriveResult'
 import { ProgressPage } from './features/progress/ProgressPage'
 import { WatchLibrary } from './features/video/WatchLibrary'
+import { LoginPage } from './features/account/LoginPage'
+import { AccountPage } from './features/account/AccountPage'
+import { useAuth } from './features/account/auth'
 import { Spinner } from './components/ui/Spinner'
 
 // The 3D modules pull in three.js, so they load on demand.
@@ -30,6 +33,12 @@ const DrivePlay = lazy(() => import('./features/drive/DrivePlay'))
 const VideoPlayer = lazy(() => import('./features/video/VideoPlayer'))
 
 export function App() {
+  const recovery = useAuth((s) => s.recovery)
+  const navigate = useNavigate()
+  // Following a password reset link lands on the account page, where the new password is chosen.
+  useEffect(() => {
+    if (recovery) navigate('/account', { replace: true })
+  }, [recovery, navigate])
   return (
     <Suspense fallback={<Spinner label="Loading" />}>
       <Routes>
@@ -61,6 +70,8 @@ export function App() {
                 <Route path="progress" element={<ProgressPage />} />
                 <Route path="routes" element={<RoutesHome />} />
                 <Route path="routes/:routeId" element={<RouteDetail />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="account" element={<AccountPage />} />
                 <Route path="about" element={<AboutPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
